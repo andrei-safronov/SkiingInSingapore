@@ -38,26 +38,27 @@ public final class LongestPathAlgorithm {
 
         int currentValue = data[x][y];
 
-        Point nextPoint = null;
-
         //check if it's possible to move WEST
-        if (y - 1 >= 0 && !current.isDirectionVisited(MoveDirection.WEST) && data[x][y - 1] < currentValue)
-            nextPoint = new Point(x, y - 1, MoveDirection.WEST);
+        if (y - 1 >= 0 && !current.isDirectionVisited(MoveDirection.WEST) && data[x][y - 1] < currentValue) {
+            stack.push(new Point(x, y - 1, MoveDirection.WEST));
+            findLongestPath(maxX, maxY, data, stack, longestPath);
+        }
 
         //check if it's possible to move NORTH
-        if (x - 1 >= 0 && !current.isDirectionVisited(MoveDirection.NORTH) && data[x - 1][y] < currentValue)
-            nextPoint = new Point(x - 1, y, MoveDirection.NORTH);
+        if (x - 1 >= 0 && !current.isDirectionVisited(MoveDirection.NORTH) && data[x - 1][y] < currentValue) {
+            stack.push(new Point(x - 1, y, MoveDirection.NORTH));
+            findLongestPath(maxX, maxY, data, stack, longestPath);
+        }
 
         //check if it's possible to move EAST
-        if (y + 1 < maxY && !current.isDirectionVisited(MoveDirection.EAST) && data[x][y + 1] < currentValue)
-            nextPoint = new Point(x, y + 1, MoveDirection.EAST);
+        if (y + 1 < maxY && !current.isDirectionVisited(MoveDirection.EAST) && data[x][y + 1] < currentValue) {
+            stack.push(new Point(x, y + 1, MoveDirection.EAST));
+            findLongestPath(maxX, maxY, data, stack, longestPath);
+        }
 
         //check if it's possible to move SOUTH
-        if (x + 1 < maxX && !current.isDirectionVisited(MoveDirection.SOUTH) && data[x + 1][y] < currentValue)
-            nextPoint = new Point(x + 1, y, MoveDirection.SOUTH);
-
-        if (nextPoint != null) {
-            stack.push(nextPoint);
+        if (x + 1 < maxX && !current.isDirectionVisited(MoveDirection.SOUTH) && data[x + 1][y] < currentValue) {
+            stack.push(new Point(x + 1, y, MoveDirection.SOUTH));
             findLongestPath(maxX, maxY, data, stack, longestPath);
         }
 
