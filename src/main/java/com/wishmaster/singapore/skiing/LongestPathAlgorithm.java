@@ -85,9 +85,8 @@ public final class LongestPathAlgorithm {
         stack.pop();
 
         //if it's not the start of path, it's needed to take previous point and set this direction as visited
-        if (stack.peek() != null) {
+        if (stack.peek() != null)
             stack.peek().markDirectionAsVisited(current.getOffsetFromPreviousCoordinate());
-        }
     }
 
     public static int getDropping(int[][] data, List<Point> a) {
