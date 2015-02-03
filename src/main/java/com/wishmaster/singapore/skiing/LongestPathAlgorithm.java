@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Implementation of algorithm to find longest path.
  * Actually, this is a modification of depth-first algorithm.
- * It checks all paths and finds the longest for each point from given data.
+ * It checks all paths and finds the longest for each point from given data set.
  *
  * @author asafronov
  * @since 03.02.2015
@@ -90,7 +90,7 @@ public final class LongestPathAlgorithm {
     }
 
     public static int getDropping(int[][] data, List<Point> a) {
-        int start = data[a.get(0).getX()][a.get(0).getY()]; //todo: not optimal for linkedList
+        int start = data[a.get(0).getX()][a.get(0).getY()];
         int endIndex = a.size() - 1;
         int end = data[a.get(endIndex).getX()][a.get(endIndex).getY()];
         //subtract start from end because it's a stack and first (highest) point is the last!
